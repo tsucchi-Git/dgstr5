@@ -138,10 +138,25 @@
 		  {
 		    alert('ローカルストレージは使えません');
 		  }
-		  //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
-		  L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-		      attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-		  }).addTo(mymap);
+	          //地理院の地図タイル（標準地図と空中写真の選択をレイヤーコントロールを可能にする）
+	          var gsi =L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', 
+	              {attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"});
+	          //地理院地図の空中写真タイル
+	          var gsiphoto = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',
+	              {attribution: "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"});
+	          //baseMapsオブジェクトのプロパティに3つのタイルを設定
+	          var baseMaps = {
+	              "地理院地図" : gsi,
+	              "空中写真" : gsiphoto,
+	          };
+	          //layersコントロールにbaseMapsオブジェクトを設定して地図に追加
+	          //コントロール内にプロパティ名が表示される
+	          L.control.layers(baseMaps).addTo(mymap);
+	          gsi.addTo(mymap);     //標準地図をデフォルトとする
+ 	          //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+		  // L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+		  //     attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+		  // }).addTo(mymap);
 		  //マーカーを表示する関数の呼び出し
 		  MarkerShow(); 
 		  //現在地表示ボタンを作成
