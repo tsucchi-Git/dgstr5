@@ -272,10 +272,24 @@
         }        
       function spot_map(latitude,longitude,curlatitude,curlongitude){
           //地図関係
-            //地図の表示
-            L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-                  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-              }).addTo(mymap);
+          //地理院の地図タイル（標準地図と空中写真の選択をレイヤーコントロールを可能にする）
+            var gsi =L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', 
+              {attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"});
+            //地理院地図の空中写真タイル
+            var gsiphoto = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',
+              {attribution: "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"});
+            //baseMapsオブジェクトのプロパティに3つのタイルを設定
+            var baseMaps = {
+              "地理院地図" : gsi,
+              "空中写真" : gsiphoto,
+            };
+            //layersコントロールにbaseMapsオブジェクトを設定して地図に追加
+            //コントロール内にプロパティ名が表示される
+            L.control.layers(baseMaps).addTo(mymap);
+            gsi.addTo(mymap);     //標準地図をデフォルトにっする               
+            // L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+            //       attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+            //   }).addTo(mymap);
             mymap.locate({setView: false, maxZoom: 16, timeout: 20000}); 
             //地図の表示範囲を設定する（スポットと現在位置のマーカーがすべて表示される）関数の呼び出し
             MapDisplayBoundCheckin(latitude,longitude,curlatitude,curlongitude);         
