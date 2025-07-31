@@ -366,6 +366,7 @@
                 dist.style.border="solid 2px blue"; //境界線の太さと色を指定
                 dist.style.textAlign = "center";  //センタリング
                 dist.style.fontSize="12pt";       //フォントサイズを指定
+                dist.style.color="red";            //フォントの色を指定
               } else 
               {
                 //対象地点のチェックイン可能範囲の内側にいる場合の処理
@@ -375,6 +376,7 @@
                 dist.style.backgroundColor="springgreen";    //背景色を指定
                 dist.style.textAlign = "center";      //センタリング
                 dist.style.fontSize="10pt";           //フォントサイズを指定
+                dist.style.color="black";              //フォントの色を指定
                 //文字ボタンをタップ可能にし、タップ後の処理を記述
                 dist.addEventListener('click',Stamp);
                 }
@@ -383,6 +385,7 @@
                   //文字ボタンの文字列などを変更し、文字ボタンのクリックを無効化する。
                     dist.textContent= "スタンプをゲットしました！";
                     dist.style.backgroundColor="magenta"; //背景色を指定
+                    dist.style.color="black";              //フォントの色を指定
                     //文字ボタンのオンクリック機能の削除
                     dist.removeEventListener('click', Stamp)
                     //現在地の連続監視機能を停止
