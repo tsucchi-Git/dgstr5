@@ -123,7 +123,7 @@
         <button class="faq-question">Q5: チェックインできません。</button>
         <div class="faq-answer">
           １）距離が離れすぎている。<br>
-          　スマートフォン等の機種によっては、位置情報サービス（GPS）の座標が大きくずれていることがあります。スポットまでの距離が表示されるので、これを参考にしてください。<br>
+          　スマートフォン等の機種によっては、位置情報サービス（GPS）の座標が大きくずれていることがあります。<span id="underline">また、お手持ちのスマートフォンの位置情報のぶれ（変動）によって、チェックインに時間を要する場合があります。</span><br>　スポットまでの距離が表示されるので、これも参考にしてください。<br>
           ２）GPSが有効になっていない。<br>
           　お使いのスマートフォンで、位置情報サービスがオフになっている可能性があります。スマートフォンの位置情報サービスが有効になっているか確認してください。位置情報サービスを有効にする方法は、Q4を参照してください。
         </div>
@@ -143,7 +143,7 @@
       <div class="faq-item">
         <button class="faq-question">Q8: スタンプは、これをゲットした次の日以降も有効ですか？</button>
         <div class="faq-answer">
-          有効です。スタンプ帳には、別の日にゲットしたスタンプも反映されます。
+          　有効です。スタンプ帳には、別の日にゲットしたスタンプも反映されます。<br>　ただし、Safariをブラウザとして利用している場合、ブラウザの仕様で、サイトにアクセス後７日間ユーザーの操作がない場合、保存したデータが削除されてしまう可能性があります。その場合、獲得したスタンプが消えてしまい、復活できません。ご留意ください。スタンプ帳を適宜スクリーンショットして保存しておくことをお勧めします。
         </div>
       </div>      
       <div class="faq-item">
@@ -159,19 +159,25 @@
         </div>
       </div>      
       <div class="faq-item">
-        <button class="faq-question">Q11: 古いスマートフォンで参加できますか？</button>
+        <button class="faq-question">Q11: ブラウザの機能において、「閲覧履歴データの削除」(Google Chromeの場合）や「履歴とWebサイトデータを消去」(Apple Safariの場合）を行うと、なぜ獲得したスタンプが消去されてしまいますか？</button>
+        <div class="faq-answer">
+          このアプリケーションは、ブラウザのストレージ機能を使っています。したがって、このWebサイトに関するデータが削除されると、ストレージがリセットされてしまうためです。
+        </div>
+      </div>      
+      <div class="faq-item">
+        <button class="faq-question">Q12: 古いスマートフォンで参加できますか？</button>
         <div class="faq-answer">
           お試しいただくしかありません。
         </div>
       </div>      
       <div class="faq-item">
-        <button class="faq-question">Q12: 何回でも参加できますか？</button>
+        <button class="faq-question">Q13: 何回でも参加できますか？</button>
         <div class="faq-answer">
           記念品の進呈は、参加者おひとり（スマートフォン１台）あたり、1回に限らせていただきます。ただし、数に限りがあります。また引き換えの期限にも留意してください。
         </div>
       </div>      
       <div class="faq-item">
-        <button class="faq-question">Q13: 記念品はどこに行けばもらえますか？</button>
+        <button class="faq-question">Q14: 記念品はどこに行けばもらえますか？</button>
         <div class="faq-answer">
         　和歌山県土砂災害啓発センター（以下の住所などを参照してください）でもらえます。ただし、開館時間と休館日にご留意ください。<br><br>
         住所：和歌山県東牟婁郡那智勝浦町市野々3027番6<br>
@@ -180,7 +186,7 @@
         開館時間：9時から12時、13時から17時<br>
         休館日：原則として年末年始<br>※大雨警報等が発表された場合休館となります。<br>
         入館料：無料<br>
-        記念品引き換えの期限：令和８年1月31日<br>
+        記念品引き換えの期限：令和８年５月３１日<br>
             ※とくに遠方からお越しの場合は、事前に連絡して頂くことをお勧めします。<br><br>
         　なお、記念品は数に限りがあり、参加者おひとり（スマートフォン１台）あたり、1個に限らせていただきます。また、記念品をお渡しする際、簡単なアンケートにご協力をお願いします。
         </div>
@@ -191,6 +197,9 @@
     <p class="contact2">件名：スタンプラリー</p>
 </body>
 <script>
+      //文中の一部のテキストにアンダーライン
+    const target = document.getElementById('underline');
+    target.style.textDecoration = 'underline';
     var items = document.querySelectorAll('.faq-question')
     items.forEach(function (question) {
       question.addEventListener('click', function () {
@@ -206,6 +215,16 @@
 </script>
 
 </html>
+
+
+
+
+
+
+
+
+
+
 
 
 

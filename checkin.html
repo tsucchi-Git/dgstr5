@@ -46,7 +46,17 @@
       margin-bottom:20px;
       text-align: center; /* 横方向の中央揃え */
       font-family:Arial;
+      animation: anime2 0.5s ease 0s 5 alternate; 
+      transform-origin:center;
     }
+    @keyframes anime2 {
+      from {
+        transform: scale(0.9,0.9);
+      }
+      to {
+        transform: scale(1,1);
+      }
+    }     
 </style>
 <body>
   <nav>
@@ -282,7 +292,7 @@
               {attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"});
             //地理院地図の空中写真タイル
             var gsiphoto = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',
-              {attribution: "<a href='https://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"});
+              {attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"});
             //baseMapsオブジェクトのプロパティに3つのタイルを設定
             var baseMaps = {
               "地理院地図" : gsi,
@@ -325,6 +335,7 @@
               dist.style.textAlign = "center";  //センタリング
               dist.style.fontSize="9pt";       //フォントサイズを指定
               dist.textContent= "少しお待ちください。スポットまでの距離を計算中です。";
+              dist.style.animationPlayState = "paused";  //アニメーションの一時停止
               dist.style.backgroundColor="lightgray"; //背景色を指定
               //現在位置の連続監視
               watch_id = navigator.geolocation.watchPosition(successCallback);//,errorCallback,position_options);  
@@ -361,12 +372,14 @@
             if(Math.round(r)>checkin_distance)  //チェックインの範囲を指定
               { 
                 //対象地点のチェックイン可能範囲の外側にいる場合の処理
-                dist.textContent='ここからの距離：'+  Math.round(r) +'m';
+                dist.textContent='ここからの距離：'+  Math.round(r) +'m ←もっと近づいてね！';
                 dist.style.backgroundColor="white";    //背景色を指定
                 dist.style.border="solid 2px blue"; //境界線の太さと色を指定
                 dist.style.textAlign = "center";  //センタリング
-                dist.style.fontSize="12pt";       //フォントサイズを指定
+                dist.style.fontSize="10pt";       //フォントサイズを指定
                 dist.style.color="red";            //フォントの色を指定
+                //文字ボタンにアニメーションを再開
+                dist.style.animationPlayState = "running";  
               } else 
               {
                 //対象地点のチェックイン可能範囲の内側にいる場合の処理
@@ -377,6 +390,8 @@
                 dist.style.textAlign = "center";      //センタリング
                 dist.style.fontSize="10pt";           //フォントサイズを指定
                 dist.style.color="black";              //フォントの色を指定
+                //文字ボタンにアニメーションを再開
+                dist.style.animationPlayState = "running";  
                 //文字ボタンをタップ可能にし、タップ後の処理を記述
                 dist.addEventListener('click',Stamp);
                 }
@@ -388,6 +403,8 @@
                     dist.style.color="black";              //フォントの色を指定
                     //文字ボタンのオンクリック機能の削除
                     dist.removeEventListener('click', Stamp)
+                    //文字ボタンにアニメーションを停止
+                    dist.style.animationPlayState = "paused";  
                     //現在地の連続監視機能を停止
                     navigator.geolocation.clearWatch(watch_id); 
                     //スポットのマーカーをグリーンからオレンジのものに差し替える
@@ -443,4 +460,15 @@
  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
