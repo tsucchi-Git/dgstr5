@@ -186,11 +186,11 @@
             		    //訪問記録と利用規約同意のリセット
                         let key_visit='visit_data%' + area_no;
                         let key_kiyaku='kiyaku_data%' + area_no;
-                        localStorage.removeItem(key_visit);
-                        localStorage.removeItem(key_kiyaku);
-            		    //ニックネームとIDのリセット
-                        let key_nickname; //ニックネームのローカルストレージのキーコード
-                        var key_userid; //ユーザーidのローカルストレージのキーコード                        
+                        //localStorage.removeItem(key_visit);
+                        //localStorage.removeItem(key_kiyaku);
+            		    //ニックネームのリセット
+                        let key_nickname="nick_name%" + area_no;
+                        localStorage.removeItem(key_nickname);
             		  }
                         //ローカルストレージ訪問記録のクリア
                         //localStorage.removeItem('visit_data%'+area_no);
@@ -209,6 +209,7 @@
     });
 </script>
 </html>
+
 
 
 
