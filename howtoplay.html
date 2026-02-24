@@ -188,9 +188,11 @@
                         let key_kiyaku='kiyaku_data%' + area_no;
                         localStorage.removeItem(key_visit);
                         localStorage.removeItem(key_kiyaku);
-            		    //ニックネームのリセット
+            		    //ニックネームとIDのリセット
                         let key_nickname="nick_name%" + area_no;
+                        let key_id="id_no%" + area_no;
                         localStorage.removeItem(key_nickname);
+                        localStorage.removeItem(key_id);
             		  }
                         //ローカルストレージ訪問記録のクリア
                         //localStorage.removeItem('visit_data%'+area_no);
@@ -209,6 +211,7 @@
     });
 </script>
 </html>
+
 
 
 
